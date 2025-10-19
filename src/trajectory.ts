@@ -66,8 +66,16 @@ export function render(s: string) {
         console.error('Trajectory viewer element does not exist');
         return;
     }
-    const obj = JSON.parse(s) as TrajectoryWrapper;
-    for (let i = 0; i < obj.trajectory.length; i++) {
-        renderSingleTrajectoryElement(trajectoryViewer, obj.trajectory[i], i);
+    try {
+        const obj = JSON.parse(s) as TrajectoryWrapper;
+        for (let i = 0; i < obj.trajectory.length; i++) {
+            try {
+                renderSingleTrajectoryElement(trajectoryViewer, obj.trajectory[i], i);
+            } catch (error) {
+                alert('Malformed trajectory elements.')
+            }
+        }
+    } catch (error) {
+        alert('Error parsing JSON.')
     }
 }
