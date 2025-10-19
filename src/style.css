@@ -247,6 +247,23 @@ body {
     box-shadow: inset 4px 0 0 color-mix(in oklab, var(--obs), #000 10%);
 }
 
+footer {
+    border-top: 1px solid white;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+footer p {
+    font-size: large;
+}
+
+footer img {
+    width: 20px;
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+    margin-right: 10px;
+}
+
 /* Small screens: tighter spacing */
 @media (max-width: 520px) {
     .container {

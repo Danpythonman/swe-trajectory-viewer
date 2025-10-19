@@ -17,14 +17,29 @@
         <section class="controls">
             <label class="file-input">
                 <input type="file" name="trajectoryFileInput" id="trajectoryFileInput" />
-                <span>Choose JSON file</span>
+                <span>Choose .traj file</span>
             </label>
 
-            <label for="trajectoryTextInput" class="sr-only">Paste JSON</label>
-            <textarea id="trajectoryTextInput" placeholder="Paste your JSON here…"></textarea>
+            <label for="trajectoryTextInput" class="sr-only">Paste .traj file contents</label>
+            <textarea id="trajectoryTextInput" placeholder="Paste your .traj file here..."></textarea>
         </section>
 
         <section id="trajectoryViewer" class="viewer"></section>
+
+        <footer>
+            <p>
+                Made by Daniel Di Giovanni for the
+                <a href="https://www.maleknazn.ca/" target="_blank" rel="noreferrer">EXINES Laboratory</a>.
+            </p>
+            <p>
+                <a href="https://github.com/Danpythonman/swe-trajectory-viewer" target="_blank" rel="noreferrer">
+                    <img src="github.svg">
+                </a>
+                <a href="https://github.com/Danpythonman/swe-trajectory-viewer" target="_blank" rel="noreferrer">
+                    Source Code
+                </a>
+            </p>
+        </footer>
     </main>
 
     <script type="module" src="/src/main.ts"></script>
