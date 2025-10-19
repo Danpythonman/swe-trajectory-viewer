@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>trajectory-viewer-frontend</title>
+</head>
+
+<body>
+    <main class="container">
+        <header class="page-header">
+            <h1>Trajectory Viewer</h1>
+            <p class="subtle">Upload a file or paste the JSON below.</p>
+        </header>
+
+        <section class="controls">
+            <label class="file-input">
+                <input type="file" name="trajectoryFileInput" id="trajectoryFileInput" />
+                <span>Choose JSON file</span>
+            </label>
+
+            <label for="trajectoryTextInput" class="sr-only">Paste JSON</label>
+            <textarea id="trajectoryTextInput" placeholder="Paste your JSON here…"></textarea>
+        </section>
+
+        <section id="trajectoryViewer" class="viewer"></section>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

@@ -1,0 +1,259 @@
+/* ===== CSS reset (minimal) ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body,
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+/* ===== Theme tokens ===== */
+:root {
+    --bg: #0b0c10;
+    --panel: #111318;
+    --panel-2: #151821;
+    --text: #e7eaf3;
+    --muted: #9aa3b2;
+    --border: #2a2f3a;
+    --accent: #4da3ff;
+
+    --thought: #6dd3ff;
+    --action: #a2f59b;
+    --obs: #ffb86c;
+
+    --radius: 14px;
+    --gap: 16px;
+    --shadow: 0 6px 24px rgba(0, 0, 0, .35);
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg: #f6f7fb;
+        --panel: #ffffff;
+        --panel-2: #fbfcff;
+        --text: #12141a;
+        --muted: #5b6473;
+        --border: #dbe0ea;
+        --accent: #195efc;
+        --shadow: 0 6px 20px rgba(24, 39, 75, .12);
+    }
+}
+
+/* ===== Page layout ===== */
+body {
+    font: 15px/1.5 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    color: var(--text);
+    background: radial-gradient(1200px 800px at 10% -10%, #1a2030 0%, var(--bg) 55%) fixed;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 18px 48px;
+}
+
+.page-header {
+    margin-bottom: 18px;
+}
+
+.page-header h1 {
+    font-weight: 700;
+    letter-spacing: .3px;
+}
+
+.subtle {
+    color: var(--muted);
+    margin-top: 6px;
+}
+
+/* ===== Controls ===== */
+.controls {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 14px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+@media (min-width: 820px) {
+    .controls {
+        grid-template-columns: 320px 1fr;
+        align-items: start;
+    }
+}
+
+/* Visually-hidden label utility for a11y */
+.sr-only {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* File input styled as a button */
+.file-input {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    user-select: none;
+    cursor: pointer;
+    border: 1px dashed var(--border);
+    background: linear-gradient(180deg, var(--panel-2), var(--panel));
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    color: var(--text);
+    text-align: center;
+    min-height: 48px;
+    transition: border-color .15s ease, transform .04s ease;
+}
+
+.file-input:hover {
+    border-color: color-mix(in oklab, var(--border), var(--accent) 25%);
+}
+
+.file-input:active {
+    transform: translateY(1px);
+}
+
+.file-input input[type="file"] {
+    display: none;
+}
+
+.file-input span {
+    font-weight: 600;
+}
+
+/* Text area (JSON paste) */
+#trajectoryTextInput {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    min-height: 160px;
+    resize: vertical;
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--panel-2);
+    color: var(--text);
+    line-height: 1.45;
+    /* Good defaults for code-like input */
+    white-space: pre-wrap;
+    /* keep newlines, wrap long lines */
+    overflow-wrap: anywhere;
+    /* break long tokens */
+    tab-size: 2;
+}
+
+#trajectoryTextInput::placeholder {
+    color: var(--muted);
+}
+
+/* ===== Viewer layout ===== */
+.viewer {
+    margin-top: 22px;
+    display: grid;
+    gap: 18px;
+}
+
+/* Each trajectory step card */
+.trajectory-element {
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--panel), var(--panel-2));
+    border-radius: var(--radius);
+    padding: 14px 14px 10px;
+    box-shadow: var(--shadow);
+}
+
+.trajectory-element h2 {
+    font-size: 1.1rem;
+    letter-spacing: .2px;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Section headers inside a step */
+.trajectory-element h3 {
+    margin-top: 10px;
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--muted);
+}
+
+/* Section descriptions inside a step */
+.trajectory-element p {
+    margin: 10px 0;
+    font-style: italic;
+}
+
+/* Code-ish blocks */
+.trajectory-element pre {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, .04), rgba(0, 0, 0, 0))
+        /* subtle stratum */
+        , var(--panel-2);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.92rem;
+    line-height: 1.45;
+
+    /* Wrapping & scrolling behavior */
+    white-space: pre-wrap;
+    /* preserve newlines but wrap */
+    overflow-wrap: anywhere;
+    /* break long tokens */
+    overflow-x: auto;
+    /* allow horizontal scroll if needed */
+    max-height: 420px;
+    /* long blocks don’t dominate */
+}
+
+/* Colored left accents for different sections (requires classes) */
+.trajectory-element-thought {
+    border-left: 4px solid color-mix(in oklab, var(--thought), #000 10%);
+    box-shadow: inset 4px 0 0 color-mix(in oklab, var(--thought), #000 10%);
+}
+
+.trajectory-element-action {
+    border-left: 4px solid color-mix(in oklab, var(--action), #000 10%);
+    box-shadow: inset 4px 0 0 color-mix(in oklab, var(--action), #000 10%);
+}
+
+.trajectory-element-observation {
+    border-left: 4px solid color-mix(in oklab, var(--obs), #000 10%);
+    box-shadow: inset 4px 0 0 color-mix(in oklab, var(--obs), #000 10%);
+}
+
+/* Small screens: tighter spacing */
+@media (max-width: 520px) {
+    .container {
+        margin-top: 24px;
+    }
+
+    .trajectory-element pre {
+        max-height: 300px;
+    }
+}
