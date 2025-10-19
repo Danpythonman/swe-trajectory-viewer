@@ -5,3 +5,5 @@ export const TRAJECTORY_ELEMENT_THOUGHT = 'trajectory-element-thought';
 export const TRAJECTORY_ELEMENT_OBSERVATION = 'trajectory-element-observation';
 
 export const TRAJECTORY_ELEMENT_ACTION = 'trajectory-element-action';
+
+export const FILE_HOVERING = 'file-hovering';

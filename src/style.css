@@ -110,7 +110,7 @@ body {
 }
 
 /* File input styled as a button */
-.file-input {
+#file-input-label {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -127,19 +127,23 @@ body {
     transition: border-color .15s ease, transform .04s ease;
 }
 
-.file-input:hover {
+#file-input-label:hover {
     border-color: color-mix(in oklab, var(--border), var(--accent) 25%);
 }
 
-.file-input:active {
+#file-input-label.file-hovering:hover {
+    border-color: color-mix(in oklab, var(--border), var(--accent) 75%);
+}
+
+#file-input-label:active {
     transform: translateY(1px);
 }
 
-.file-input input[type="file"] {
+#file-input-label input[type="file"] {
     display: none;
 }
 
-.file-input span {
+#file-input-label span {
     font-weight: 600;
 }
 
